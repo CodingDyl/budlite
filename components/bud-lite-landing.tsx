@@ -64,9 +64,11 @@ export function BudLiteLandingComponent() {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green-50"></div>
             <img
-              src="/placeholder.svg?height=1080&width=1920"
+              src="/placeholder.svg"
               alt="Cannabis field"
               className="w-full h-full object-cover"
+              width={1920}
+              height={1080}
             />
           </motion.div>
         </section>
