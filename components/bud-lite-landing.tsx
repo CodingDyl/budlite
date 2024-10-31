@@ -150,7 +150,7 @@ export function BudLiteLandingComponent() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-green-50 rounded-lg p-6 shadow-md"
                 >
-                  <p className="text-green-700 mb-4 italic">"{quote}"</p>
+                  <p className="text-green-700 mb-4 italic">&quot;{quote}&quot;</p>
                   <p className="text-green-600 font-semibold">{name}</p>
                 </motion.div>
               ))}
