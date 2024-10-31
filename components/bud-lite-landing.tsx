@@ -63,12 +63,13 @@ export function BudLiteLandingComponent() {
             className="absolute inset-0 z-0"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green-50"></div>
-            <img
+            <Image
               src="/placeholder.svg"
               alt="Cannabis field"
               className="w-full h-full object-cover"
               width={1920}
               height={1080}
+              priority
             />
           </motion.div>
         </section>
@@ -87,10 +88,12 @@ export function BudLiteLandingComponent() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-green-50 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
                 >
-                  <img
+                  <Image
                     src={`/placeholder.svg?height=200&width=200&text=${product}`}
                     alt={product}
                     className="w-full h-48 object-cover rounded-md mb-4"
+                    width={200}
+                    height={200}
                   />
                   <h3 className="text-xl font-semibold text-green-700 mb-2">{product}</h3>
                   <p className="text-green-600 mb-4">Experience the finest quality and potency.</p>
