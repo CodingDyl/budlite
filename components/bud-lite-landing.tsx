@@ -2,16 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, Leaf, Shield, Sun } from 'lucide-react'
+import { ArrowRight, Leaf, Shield, Sun, Menu } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { bud_logo } from '@/app/assets'
+import { bud_logo, hero } from '@/app/assets'
 import Image from 'next/image'
 
 export function BudLiteLandingComponent() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const [mounted, setMounted] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -22,7 +23,7 @@ export function BudLiteLandingComponent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-t from-forest-800 to-forest-100">
+    <div className="min-h-screen bg-gradient-to-t from-forest-950 to-forest-100">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[rgba(0, 0, 0, 0.9)] bg-opacity-90 backdrop-blur-md">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Image 
@@ -32,11 +33,30 @@ export function BudLiteLandingComponent() {
             width={192} 
             className="h-16 w-auto"
           />
-          <div className="space-x-4">
+          
+          <Button
+            variant="ghost"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+
+          <div className="hidden md:flex space-x-4">
             <Button variant="ghost">Products</Button>
             <Button variant="ghost">About</Button>
             <Button variant="ghost">Contact</Button>
           </div>
+
+          {isMenuOpen && (
+            <div className="absolute top-full left-0 right-0 bg-[rgba(0, 0, 0, 0.9)] backdrop-blur-md md:hidden">
+              <div className="flex flex-col items-center py-4 space-y-2">
+                <Button variant="ghost" className="w-full">Products</Button>
+                <Button variant="ghost" className="w-full">About</Button>
+                <Button variant="ghost" className="w-full">Contact</Button>
+              </div>
+            </div>
+          )}
         </nav>
       </header>
 
@@ -64,7 +84,7 @@ export function BudLiteLandingComponent() {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green-50"></div>
             <Image
-              src="/placeholder.svg"
+              src={hero}
               alt="Cannabis field"
               className="w-full h-full object-cover"
               width={1920}
